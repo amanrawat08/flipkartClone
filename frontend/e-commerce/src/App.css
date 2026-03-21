@@ -19,7 +19,53 @@
 
 .swiper-slide img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100%; 
   object-fit: cover;
+}
+
+
+.swiper-button-prev {
+    position: absolute;
+    top: 40%;
+    z-index: 3333333;
+    left: 0;
+    rotate: 180deg;
+    cursor: pointer;
+}
+.swiper-button-next{
+  cursor: pointer;
+    position: absolute;
+    top: 40%;
+    z-index: 3333333;
+    right: 0;
+}
+
+.swiper-button-prev, .swiper-button-next {
+        width: 35px;
+    height: 64px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(255 244 244);
+    border-radius: 3px;
+    font-size: 12px !important;
+}
+
+.prod-img{
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    background: #ffffff;
+}
+
+.prod-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }

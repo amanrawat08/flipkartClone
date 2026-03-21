@@ -1,7 +1,7 @@
 
 const TopHeader = () => {
   return (
-    <div className="w-full px-8 py-2 bg-[#1844bc]">
+    <div className="w-full px-8 py-2 bg-[#2874f0]">
       <div className="flex items-center gap-12">
 
         {/* Logo */}
@@ -26,7 +26,7 @@ const TopHeader = () => {
          
         <div className="flex items-center justify-end gap-8  text-white">
           
-          <button className="font-medium bg-white px-4 text-[#1844bc] text-2xl py-1">Login</button>
+          <button className="font-medium bg-white px-4 text-[#2874f0] text-2xl py-1">Login</button>
           <div className="font-medium text-sm">Become a Seller</div>
           <div className="font-medium text-sm">More</div>
           <div className="font-medium text-sm">Cart</div>
