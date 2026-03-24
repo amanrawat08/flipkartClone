@@ -47,7 +47,7 @@ const ProductsList = () => {
             "priceText": "From ₹549",
             "brands": ["Realme", "Philips"]
         },
-         {
+        {
             "id": 2,
             "title": "Best of Hair Straighteners",
             "image": "electronic/straightner.webp",
@@ -77,16 +77,16 @@ const ProductsList = () => {
             <Swiper
                 slidesPerView={5}
                 spaceBetween={30}
-             //   centeredSlides={true}
-                 navigation={true}
-                modules={[Pagination, Navigation]}
+                navigation={true}
+                watchOverflow={true}
+                modules={[Navigation]}
                 className="mySwiper"
             >
                 {
                     product.map((data) => {
                         return <SwiperSlide className='min-h-48 bg-white cursor-pointer group'>
                             <div className='min-h-32 prod-img p-4 '>
-                                 <img src={data.image} className='object-contain group-hover:scale-110 duration-300 transition-transform' alt="" />
+                                <img src={data.image} className='object-contain group-hover:scale-110 duration-300 transition-transform' alt="" />
                             </div>
                             <div className='text-sm font-medium'>{data.title}</div>
                             <div className='text-xs font-medium text-green-700'>{data.priceText}</div>
