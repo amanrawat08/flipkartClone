@@ -7,9 +7,9 @@ import 'swiper/css/pagination';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 const Hero = () => {
   return (
-    <div className="h-[60vh] mx-2 px-2 py-2 my-2 bg-gray-200 rounded-sm">
+    <div className=" mx-2 px-2 py-2   rounded-sm">
       <Swiper
-        pagination={{ type: "progressbar" }}
+      slidesPerView={2.5}  
         spaceBetween={30}
         loop={true}
         // centeredSlides={true}
@@ -18,29 +18,29 @@ const Hero = () => {
           disableOnInteraction: false,
         }}
         navigation={true}
-        modules={[Navigation]}
-        className="h-full rounded-sm"
+        modules={[Navigation, Pagination ,Autoplay]}
+        className=" "
       >
-        <SwiperSlide className="flex items-center justify-center">
+        <SwiperSlide className="flex items-center justify-center bg-white mt-2">
           <img
-            src="banner1.png"
-            className="h-full w-full object-contain"
+            src="./electronic/banner1.jpg"
+            className=" w-full object-contain rounded-2xl"
             alt=""
           />
         </SwiperSlide>
 
-        <SwiperSlide className="flex items-center justify-center">
+        <SwiperSlide className="flex items-center justify-center bg-white mt-2">
           <img
-            src="banner2.png"
-            className="h-full w-full object-contain"
+            src="./electronic/banner2.jpg"
+            className="w-full object-contain rounded-2xl"
             alt=""
           />
         </SwiperSlide>
 
-        <SwiperSlide className="flex items-center justify-center">
+        <SwiperSlide className="flex items-center bg-white justify-center mt-2">
           <img
-            src="banner3.png"
-            className="h-full w-full object-contain"
+            src="./electronic/banner3.png"
+            className="w-full object-contain rounded-2xl"
             alt=""
           />
         </SwiperSlide>
