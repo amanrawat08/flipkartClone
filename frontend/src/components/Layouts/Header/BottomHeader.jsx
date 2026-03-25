@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 
 const BottomHeader = () => {
     const fakeData = [
@@ -63,31 +64,19 @@ const BottomHeader = () => {
             "icon": "two-wheelers.png",
             "slug": "two-wheelers"
         },
-        {
-            "id": 12,
-            "name": "Sports & Fitness",
-            "icon": "sports.png",
-            "slug": "sports-fitness"
-        },
-        {
-            "id": 13,
-            "name": "Books & More",
-            "icon": "books.png",
-            "slug": "books-more"
-        },
-        {
-            "id": 14,
-            "name": "Furniture",
-            "icon": "furniture.png",
-            "slug": "furniture"
-        }
+         
     ]
+    useEffect(()=>{
+        console.log(
+         window.screenY)
+
+    },[window.scroll])
     return (
         <div className='w-full px-8 py-2 border-b-2 border-gray-100'>
-            <div className='flex items-center gap-2 justify-between text-sm font-medium'>
+            <div className='flex items-center gap-4 text-sm font-medium'>
                 {
                     fakeData.map((data)=>{
-                    return <div key={data.id} className='cursor-pointer flex-col text-center  m-auto justify-center'>
+                    return <div key={data.id} className='cursor-pointer flex-col text-center   justify-center'>
                         <img src="fashion.svg" className='m-auto' alt="" />
                         <div>
                             {data.name}
