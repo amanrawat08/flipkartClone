@@ -57,11 +57,12 @@
 }
 
 .prod-img{
-     display: flex;
+        display: flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 303px;
     background: #ffffff;
+    width: 201px;
 }
 
 .prod-img img{

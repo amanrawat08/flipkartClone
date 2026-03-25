@@ -75,8 +75,8 @@ const ProductsList = () => {
     return (
         <div className="overflow-hidden  flex-1  p-2   rounded-sm">
             <Swiper
-                slidesPerView={4.5}
-                spaceBetween={30}
+                slidesPerView={4.2}
+                spaceBetween={5}
                 navigation={true}
                 watchOverflow={true}
                 modules={[Navigation]}
@@ -85,8 +85,8 @@ const ProductsList = () => {
                 {
                     product.map((data) => {
                         return <SwiperSlide className=' bg-white cursor-pointer group'>
-                            <div className=' prod-img rounded-2xl overflow-hidden'>
-                                <img src={data.image} className='object-contain  duration-300 transition-transform' alt="" />
+                            <div className=' prod-img  overflow-hidden'>
+                                <img src={data.image} className='object-contain rounded-xl duration-300 transition-transform' alt="" />
                             </div>
                             {/* <div className='text-sm font-medium'>{data.title}</div> */}
                             {/* <div className='text-xs font-medium text-green-700'>{data.priceText}</div> */}

@@ -68,7 +68,7 @@ const PageCategory = () => {
     ]
     return (
         <section>
-            <div className="mx-2 px-2 py-2 my-2  rounded-sm">
+            <div className="mx-16 px-2 py-2 my-2  rounded-sm">
                 <div className="flex flex-wrap gap-3">
                     {
                         category.map((data , index) => {

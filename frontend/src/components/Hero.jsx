@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 const Hero = () => {
   return (
-    <div className=" mx-2 px-2 py-2   rounded-sm">
+    <div className=" mx-16 px-2 py-2   rounded-sm">
       <Swiper
         slidesPerView={2.5}
         spaceBetween={30}
