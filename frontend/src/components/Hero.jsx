@@ -9,16 +9,16 @@ const Hero = () => {
   return (
     <div className=" mx-2 px-2 py-2   rounded-sm">
       <Swiper
-      slidesPerView={2.5}  
+        slidesPerView={2.5}
         spaceBetween={30}
         loop={true}
         // centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 2500, 
           disableOnInteraction: false,
         }}
         navigation={true}
-        modules={[Navigation, Pagination ,Autoplay]}
+        modules={[Navigation, Pagination, Autoplay]}
         className=" "
       >
         <SwiperSlide className="flex items-center justify-center bg-white mt-2">
