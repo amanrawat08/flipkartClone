@@ -1,25 +1,39 @@
-import admin from "../model/admin.js";
 import bcrypt from "bcryptjs";
-export const registerAdmin = async(req,res)=>{
-    
-    try {
-        let {email, password} = req.body;
 
-        if(!email || !password){
+
+
+export const loginAdmin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
             return res.status(404).json({
-                message:"Enter Full data"
+                message: "Enter full Details",
             })
         }
-        const hashedPass = await bcrypt.hash(password, 16)
-        const adminDAta =await  admin.create({email,password:hashedPass});
+
+        const checkUser = await admin.findOne({ email });
+        if (!checkUser) {
+            return res.status(400).json({
+                message: "User not found",
+            })
+        }
+
+        const checkPassword = await bcrypt.compare(password, checkUser.password);
+        if (!checkPassword) {
+            return res.status(400).json({
+                message: "Invalid email or password",
+            })
+        }
+
         return res.status(200).json({
-            message:"Successfully created"
+            checkUser,
+            message: "Successfully login",
         })
 
     } catch (error) {
         return res.status(500).json({
-            message:"Internal Error "
+            message: "Internal server erro",
         })
     }
-
 }
+
