@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-
+import axios from "axios"
 export default function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
-  const handleForm = (e)=>{
+  const handleForm = async (e)=>{
     e.preventDefault();
-    console.log(email, password);
-    
+    try {
+      const res = await axios.post("http://localhost:1000/api/admin/login",{email,password});
+      console.log(res);
+
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(email, password);
   }
 
   return (
@@ -72,14 +78,7 @@ export default function Login() {
             </button>
           </form>
 
-          {/* <div className="text-center mt-6 text-sm text-gray-500">
-            <p>
-              Forgot your password?{' '}
-              <span className="text-purple-600 cursor-pointer hover:underline">
-                Get help Signing in.
-              </span>
-            </p>
-          </div> */}
+           
 
           <div className="text-center mt-8 text-xs text-gray-400">
             Terms of use. Privacy policy

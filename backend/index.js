@@ -1,10 +1,11 @@
 import express from "express";
 import { connectDB } from "./db/db.js";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
-import adminRouter from "./routes/adminRoutes.js"
+import userRoutes from "./routes/userRoutes.js"; 
+import cors from "cors";
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/',(req,res)=>{
     res.status(200).json({
@@ -12,8 +13,7 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.use('/api', userRoutes);
-app.use('/admin', adminRouter);
+app.use('/api', userRoutes); 
 
 dotenv.config();
 connectDB();
