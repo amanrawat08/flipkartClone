@@ -1,5 +1,15 @@
+import { useEffect, useState } from "react";
 
 export default function Login() {
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+
+  const handleForm = (e)=>{
+    e.preventDefault();
+    console.log(email, password);
+    
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 via-indigo-500 to-green-400 p-4">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 overflow-hidden">
@@ -35,12 +45,13 @@ export default function Login() {
             </h1>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={(e)=>handleForm(e)}>
             <div>
               <input
                 type="email"
                 placeholder="Email address"
                 className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
 
@@ -49,6 +60,7 @@ export default function Login() {
                 type="password"
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
 
