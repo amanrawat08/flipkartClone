@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import axios from "axios"
 export default function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
-  const handleForm = async (e)=>{
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:1000/api/admin/login",{email,password});
-      console.log(res);
+  const handleForm = async (e) => {
 
+    e.preventDefault();
+    const toastId = toast.loading("Loading...")
+    try {
+      const res = await axios.post("http://localhost:1000/api/admin/login", { email, password });
+      console.log(res);
+      toast.dismiss(toastId)
+      toast.success("done")
+      
     } catch (error) {
       console.log(error);
+      toast.dismiss(toastId)
+      toast.error('Something went wrong!!!');
+
     }
     // console.log(email, password);
+    setEmail("")
+    setPassword("")
   }
 
   return (
@@ -51,13 +61,13 @@ export default function Login() {
             </h1>
           </div>
 
-          <form className="space-y-5" onSubmit={(e)=>handleForm(e)}>
+          <form className="space-y-5" onSubmit={(e) => handleForm(e)}>
             <div>
               <input
                 type="email"
                 placeholder="Email address"
                 className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -66,7 +76,7 @@ export default function Login() {
                 type="password"
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -78,7 +88,7 @@ export default function Login() {
             </button>
           </form>
 
-           
+
 
           <div className="text-center mt-8 text-xs text-gray-400">
             Terms of use. Privacy policy
