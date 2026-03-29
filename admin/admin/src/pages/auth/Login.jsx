@@ -29,7 +29,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 via-indigo-500 to-green-400 p-4">
+    <div className="min-h-screen flex-1 flex items-center justify-center bg-gradient-to-r from-purple-500 via-indigo-500 to-green-400 p-4">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 overflow-hidden">
         {/* Left Section */}
         <div className="hidden md:flex items-center justify-center bg-gray-50 p-8">
