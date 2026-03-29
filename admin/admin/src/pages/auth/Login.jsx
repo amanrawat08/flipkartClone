@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 export default function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleForm = async (e) => {
 
     e.preventDefault();
@@ -12,12 +13,13 @@ export default function Login() {
     try {
       const res = await axios.post("http://localhost:1000/api/admin/login", { email, password });
       console.log(res);
-      toast.dismiss(toastId)
-      toast.success("done")
+      toast.dismiss(toastId);
+      toast.success("done");
+      navigate("/dashboard");
       
     } catch (error) {
       console.log(error);
-      toast.dismiss(toastId)
+      toast.dismiss(toastId);
       toast.error('Something went wrong!!!');
 
     }
