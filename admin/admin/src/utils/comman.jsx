@@ -1,0 +1,1 @@
+export const API_FRONT = "http://localhost:1000/api/admin"

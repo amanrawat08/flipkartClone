@@ -2,21 +2,27 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { API_FRONT } from "../../utils/comman";
+import { setAdmin } from "../../../redux/UserSlice";
+import { useDispatch } from "react-redux";
 export default function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const handleForm = async (e) => {
 
     e.preventDefault();
     const toastId = toast.loading("Loading...")
     try {
-      const res = await axios.post("http://localhost:1000/api/admin/login", { email, password });
-      console.log(res);
+      const res = await axios.post(`${API_FRONT}/login`, { email, password },{
+        withCredentials:true
+      });
+      dispatch(setAdmin(res?.data?.checkUser));
       toast.dismiss(toastId);
       toast.success("done");
       navigate("/dashboard");
-      
+
     } catch (error) {
       console.log(error);
       toast.dismiss(toastId);
@@ -52,10 +58,6 @@ export default function Login() {
         <div className="flex flex-col justify-center p-8 md:p-12">
           <div className="text-center mb-8">
             <div className="flex justify-center space-x-2 mb-2">
-              {/* <span className="w-3 h-3 bg-red-400 rounded-full"></span>
-              <span className="w-3 h-3 bg-green-400 rounded-full"></span>
-              <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-              <span className="w-3 h-3 bg-blue-400 rounded-full"></span> */}
               <img src="logo.png" className="w-[150px]" alt="" />
             </div>
             <h1 className="text-2xl font-bold text-gray-800">
@@ -89,9 +91,6 @@ export default function Login() {
               LOGIN
             </button>
           </form>
-
-
-
           <div className="text-center mt-8 text-xs text-gray-400">
             Terms of use. Privacy policy
           </div>

@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import user from "../model/user.js";
-import jwt  from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -21,28 +21,30 @@ export const loginAdmin = async (req, res) => {
                 message: "User not found",
             })
         }
-        
+
         const checkPassword = await bcrypt.compare(password, checkUser.password);
         // console.log(checkPassword);
-        
+
         if (!checkPassword) {
             return res.status(400).json({
                 message: "Invalid email or password",
             })
         }
         console.log(req.body);
-        
+
         if (checkUser.role !== "admin") {
             return res.status(400).json({
                 message: "Email or password is incorrect.",
             })
         }
 
-        const token = jwt.sign({id: checkUser._id }, process.env.SECRET_KEY, { expiresIn: "7d" });
+        const token = jwt.sign({ id: checkUser._id }, process.env.SECRET_KEY, { expiresIn: "7d" });
         console.log(token);
-        
+
         return res.status(200).cookie("token", token, {
-            httpOnly: true
+            httpOnly: true,
+            secure: false,
+            sameSite: "lax",      // important
         }).json({
             checkUser,
             message: "Successfully login",
