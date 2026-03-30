@@ -7,33 +7,44 @@ import SideNav from "./components/layouts/SideNav";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadUser } from "../redux/UserSlice";
+import CreateCategory from "./components/cateogies/CreateCategory";
+import Header from "./components/layouts/Header";
 
 
 function App() {
   const dispatch = useDispatch();
-  const isAuth = useSelector((state)=>state.admin.isAuthenticated);
-  useEffect(()=>{
+  const isAuth = useSelector((state) => state.admin.isAuthenticated);
+  useEffect(() => {
     dispatch(loadUser())
   })
   return (
-    <>
-    <div className="flex">
-      {
-        isAuth &&
-      <SideNav/>
-      }
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Login />} />
-          
-          <Route path="/dashboard" element={<Dashboard />} />
-         
-      </Routes>
+    <section className="flex flex-wrap">
+
+      <div className="flex">
+        {
+          isAuth &&
+          <SideNav />
+        }
+      </div>
+      <div className="flex-1 ">
+        {
+          isAuth &&
+          <Header />
+        }
+      
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/createCategories" element={<CreateCategory />} />
+
+          </Routes>
+       </div> 
       <Toaster />
 
-    </div>
 
-    </>
+
+    </section>
   )
 }
 

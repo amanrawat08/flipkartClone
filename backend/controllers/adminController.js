@@ -57,3 +57,14 @@ export const loginAdmin = async (req, res) => {
     }
 }
 
+
+//logout
+export const logoutAdmin = async (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true, secure: false, // true in production (HTTPS)
+        sameSite: "lax", path: "/"
+    });
+    return res.status(200).json({ message: "Logged out successfully" });
+};
+
+

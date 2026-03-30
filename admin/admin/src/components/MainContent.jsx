@@ -3,8 +3,8 @@ import Header from './layouts/Header'
 
 const MainContent = () => {
   return (
-    <div className=' px-12'>
-        <Header/>
+    <div className=' '>
+        
         <div className='m-4 flex gap-3 mt-11'>
             <div className='border px-6 py-5 border-gray-200 flex-1'>
                 <img src="team.png" alt="" />

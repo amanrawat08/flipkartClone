@@ -1,5 +1,6 @@
 import { MdArrowDropUp } from "react-icons/md";
 import { MdArrowDropDown } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const SideNav = () => {
     return (
@@ -9,6 +10,9 @@ const SideNav = () => {
             </div>
             <div className='text-sm  mt-2  '>
                 <ul className="py-4 dashboard-menu ">
+                    <Link to="/dashboard" className="w-full">
+                            Dashboard
+                    </Link>
                     <li className=" ">
                         <ul className="">
                             <div className="flex items-center justify-between">
@@ -18,9 +22,9 @@ const SideNav = () => {
                                 <MdArrowDropDown />
                             </div>
 
-                            <li>
+                            <Link to="/createCategories" className="w-full">
                                 Add new Categoies
-                            </li>
+                            </Link>
                             <li>
                                 view Categories
                             </li>
