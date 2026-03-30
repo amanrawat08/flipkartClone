@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import Login from "./pages/auth/Login"
 import './App.css'
 import toast, { Toaster } from 'react-hot-toast';
@@ -13,10 +13,15 @@ import Header from "./components/layouts/Header";
 
 function App() {
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const isAuth = useSelector((state) => state.admin.isAuthenticated);
   useEffect(() => {
-    dispatch(loadUser())
-  })
+    dispatch(loadUser());
+    if (isAuth) {
+      toast.success("Welcome back!");
+      Navigate("/dashboard");
+    }
+  },[isAuth]);
   return (
     <section className="flex flex-wrap">
 
