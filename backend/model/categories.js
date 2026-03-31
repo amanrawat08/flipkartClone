@@ -3,31 +3,29 @@ import mongoose from "mongoose";
 const categorySlice = new mongoose.Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     slug:{
         type:String,
         unique:true,
-        require:true
+        required:true
     },
     mainImg: {
         type: String,
-        require: true
     },
-    posterImages:{
-        url: String,
-        public_id: String,
-        require:true
+    banner:{
+        type: String, 
+        required:true
     },
-    offerPosters:{
+    offerBanner:{
         type:String,
-        require:true
+        required:true
     },
-    cartonImg:{
+    navImg:{
         type:String,
-        require:true
+        required:true
     }
-})
+}, { timestamps: true })
 
 export default mongoose.model("Category", categorySlice);

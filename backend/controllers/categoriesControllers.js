@@ -1,4 +1,5 @@
 import { uploadToCloudinary } from "../cloud/cloudinaryConfig.js";
+import Categories from "../model/categories.js";
 
 export const createCategory = async (req, res) => {
     try {
@@ -14,19 +15,45 @@ export const createCategory = async (req, res) => {
         }
 
         //upload img;
-        const navImgUrl = navImage ? (await uploadToCloudinary(navImage)) : null;
-        console.log(navImgUrl.secure_url);
-        const bannerUrl = banners ? (await uploadToCloudinary(banners)) : null;
-        console.log(bannerUrl);
-        const offerBannerUrl = offerBanner ? (await uploadToCloudinary(offerBanner)) : null;
-        console.log(offerBannerUrl);
+        const navImgUrl = navImage ? (await uploadToCloudinary(navImage)) : null; 
+        const bannerUrl = banners ? (await uploadToCloudinary(banners)) : null; 
+        const offerBannerUrl = offerBanner ? (await uploadToCloudinary(offerBanner)) : null; 
+        
+        try {
+            const isDuplicate = await Categories.find({
+                $or:[{name}, {slug}]
+            });
+            if(isDuplicate){
+                return res.status(404).json({
+                message: "Category already exists"
+            })
+            }
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+        try {
+           const newCategory = await Categories.create({
+            name,
+            slug,
+            banner:bannerUrl,
+            offerBanner:offerBannerUrl,
+            navImg:navImgUrl
+        }) 
+        } catch (error) {
+            console.log(error);
+            
+        }
+        
+
+        console.log(newCategory);
         
         
 
         return res.status(200).json({
-            navImgUrl : navImgUrl.secure_url,
-            bannerUrl : bannerUrl.secure_url,
-            offerBannerUrl: bannerUrl.secure_url,
+            newCategory,
             message: "Successfully build"
         })
     } catch (error) {
