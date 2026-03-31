@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/register', register);
 router.post('/admin/login', loginAdmin);
 router.get('/admin/logout',protect, logoutAdmin);
-router.get('/admin/me',protect ,(req,res)=>{
+router.get('/admin/me',protect  ,(req,res)=>{
     return res.status(200).json({
         user:req.user,
         message:"Successfully Fetched...!!!"

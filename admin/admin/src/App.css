@@ -38,7 +38,8 @@ input[type="file"] {
   background: #4338ca;
 }
 
-#file-name {
+ 
+.file-text {
   font-size: 14px;
   color: #555;
 }
