@@ -1,5 +1,5 @@
 import { uploadToCloudinary } from "../cloud/cloudinaryConfig.js";
-import Categories from "../model/categories.js";
+import categories from "../model/categories.js";
 
 export const createCategory = async (req, res) => {
     try {
@@ -9,48 +9,42 @@ export const createCategory = async (req, res) => {
         const offerBanner = req.files.offerBanner?.[0];
 
         if (!name || !slug || !navImage || !banners || !offerBanner) {
-            return res.status(400).json({
+            return res.status(200).json({
                 message: "Enter all fields"
             })
         }
 
+
+
+
         //upload img;
-        const navImgUrl = navImage ? (await uploadToCloudinary(navImage)) : null; 
-        const bannerUrl = banners ? (await uploadToCloudinary(banners)) : null; 
-        const offerBannerUrl = offerBanner ? (await uploadToCloudinary(offerBanner)) : null; 
+        const navImgUrl = navImage ? (await uploadToCloudinary(navImage)) : null;
+        const bannerUrl = banners ? (await uploadToCloudinary(banners)) : null;
+        const offerBannerUrl = offerBanner ? (await uploadToCloudinary(offerBanner)) : null;
         
-        try {
-            const isDuplicate = await Categories.find({
-                $or:[{name}, {slug}]
-            });
-            if(isDuplicate){
-                return res.status(404).json({
+        
+ 
+        const isDuplicate = await categories.findOne({
+            $or: [{ name: name }, { slug }]
+        }); 
+        
+        if (isDuplicate) { 
+            console.log("true");
+            return res.status(404).json({
                 message: "Category already exists"
             })
-            }
-            
-        } catch (error) {
-            console.log(error);
-            
         }
 
-        try {
-           const newCategory = await Categories.create({
+
+        const newCategory = await categories.create({
             name,
             slug,
-            banner:bannerUrl,
-            offerBanner:offerBannerUrl,
-            navImg:navImgUrl
-        }) 
-        } catch (error) {
-            console.log(error);
-            
-        }
-        
+            banner: bannerUrl.secure_url,
+            offerBanner: offerBannerUrl.secure_url,
+            navImg: navImgUrl.secure_url
+        })
 
         console.log(newCategory);
-        
-        
 
         return res.status(200).json({
             newCategory,

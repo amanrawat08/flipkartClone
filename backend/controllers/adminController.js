@@ -30,7 +30,7 @@ export const loginAdmin = async (req, res) => {
                 message: "Invalid email or password",
             })
         }
-        console.log(req.body);
+       // console.log(req.body);
 
         if (checkUser.role !== "admin") {
             return res.status(400).json({

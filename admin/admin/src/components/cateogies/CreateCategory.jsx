@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { API_FRONT } from "../../utils/comman";
+ import toast from "react-hot-toast";
 const CreateCategory = () => {
   const [banner, setBanner] = useState(null);
   const [navImage, setNavImage] = useState(null);
@@ -31,10 +32,15 @@ const CreateCategory = () => {
       console.log(res.data);
 
     } catch (error) {
-      console.error('Error creating category:', error) 
+      toast.error('Error creating category:', error?.response?.data || error.message.); 
 
     }
 
+  //  setBanner(null);
+    //setNavImage(null);
+   // setOfferBanner(null);
+   // setCategoryName('');
+   // setCategorySlug('');
   };
   return (
     <div>
