@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const BottomHeader = () => {
     const fakeData = [
-        
+
         {
             "id": 2,
             "name": "Fashion",
@@ -64,24 +65,28 @@ const BottomHeader = () => {
             "icon": "two-wheelers.png",
             "slug": "two-wheelers"
         },
-         
-    ]
-    useEffect(()=>{
-        console.log(
-         window.screenY)
 
-    },[window.scroll])
+    ]
+
+    const categories = useSelector((state) => state.categories.categories);
+
+    useEffect(() => {
+        console.log(categories);
+        
+        console.log(window.screenY)
+        
+    }, [window.scroll])
     return (
         <div className='w-full px-8 py-2 border-b-2 border-gray-100'>
             <div className='flex items-center gap-4 text-sm font-medium'>
                 {
-                    fakeData.map((data)=>{
-                    return <div key={data.id} className='cursor-pointer flex-col text-center   justify-center'>
-                        <img src="fashion.svg" className='m-auto' alt="" />
-                        <div>
-                            {data.name}
+                    categories?.map((data) => {
+                        return <div key={data._id} className='cursor-pointer flex-col text-center   justify-center'>
+                            <img src={data.navImg} className='m-auto w-14' alt="" />
+                            <div>
+                                {data.name}
+                            </div>
                         </div>
-                    </div>
                     })
                 }
             </div>
