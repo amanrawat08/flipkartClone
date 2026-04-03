@@ -21,6 +21,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api', userRoutes); 
 app.use('/api/admin/category', categoryRoutes); 
+app.use('/api', categoryRoutes); 
 
 dotenv.config();
 connectDB();

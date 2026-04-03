@@ -32,8 +32,7 @@ const CreateCategory = () => {
       console.log(res.data);
 
     } catch (error) {
-      toast.error('Error creating category:', error?.response?.data || error.message.); 
-
+      toast.error('Error creating category:', error?.response?.data || error.message); 
     }
 
   //  setBanner(null);

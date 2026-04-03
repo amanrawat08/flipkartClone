@@ -1,7 +1,7 @@
 import express from "express";
 import { protect } from "../middlewares/protected.js";
 import {upload} from "../middlewares/multer.js"
-import { createCategory } from "../controllers/categoriesControllers.js";
+import { createCategory, getCategories } from "../controllers/categoriesControllers.js";
 const Router = express.Router();
 
 Router.post("/createCategory", upload.fields([
@@ -9,5 +9,7 @@ Router.post("/createCategory", upload.fields([
     { name: "banner", maxCount: 1 },
     { name: "offerBanner", maxCount: 1 },
   ]),protect, createCategory);
+
+Router.get("/getCategies", getCategories)
 
 export default Router;
