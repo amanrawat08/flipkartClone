@@ -1,6 +1,4 @@
-Here’s a clean, professional **README.md content** for your **Flipkart Clone (MERN + JWT)** project with **Admin, Seller, and Buyer roles** 👇
 
----
 
 # 🛒 Flipkart Clone (MERN Stack)
 
